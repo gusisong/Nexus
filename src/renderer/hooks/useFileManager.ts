@@ -1,7 +1,7 @@
 /**
  * useFileManager — extracts all file management state & logic from ProjectManager.
  */
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { message, Modal } from 'antd';
 import { useAppStore } from '../stores/appStore';
 import { useProjectStore } from '../stores/projectStore';
@@ -35,15 +35,33 @@ export function useFileManager() {
     refreshProjects();
   }, [refreshProjects]);
 
+  const [fileLoading, setFileLoading] = useState(false);
+  const loadIdRef = useRef(0);
+
+  // ... (other refs/state)
+
   // Load files when directory changes
   const refreshFiles = useCallback(async () => {
     if (!selectedDir) { setFiles([]); return; }
+    
+    const currentId = ++loadIdRef.current;
+    setFileLoading(true);
+    
     try {
       const list = await window.nexus.listFiles(selectedDir);
-      setFiles(list.filter((f: FileEntry) => !f.isDirectory));
-      setSelectedFiles([]);
+      // Only update if this is still the latest request
+      if (currentId === loadIdRef.current) {
+        setFiles(list.filter((f: FileEntry) => !f.isDirectory));
+        setSelectedFiles([]);
+      }
     } catch {
-      message.error('加载文件列表失败');
+      if (currentId === loadIdRef.current) {
+        message.error('加载文件列表失败');
+      }
+    } finally {
+      if (currentId === loadIdRef.current) {
+        setFileLoading(false);
+      }
     }
   }, [selectedDir]);
 
@@ -212,6 +230,7 @@ export function useFileManager() {
     workDir,
     projects,
     loading,
+    fileLoading,
     selectedDir,
     selectedDirLabel,
     files,

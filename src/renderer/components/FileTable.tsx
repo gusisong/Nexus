@@ -40,6 +40,7 @@ interface Props {
   selectedDir: string | null;
   selectedDirLabel: string;
   files: FileEntry[];
+  loading?: boolean;
   selectedFiles: string[];
   renamingFile: string | null;
   renameValue: string;
@@ -58,6 +59,7 @@ export default function FileTable({
   selectedDir,
   selectedDirLabel,
   files,
+  loading,
   selectedFiles,
   renamingFile,
   renameValue,
@@ -185,6 +187,7 @@ export default function FileTable({
             columns={columns}
             rowKey="name"
             size="small"
+            loading={loading}
             pagination={false}
             rowSelection={{
               selectedRowKeys: selectedFiles.map((p) => p.replace(selectedDir + '/', '')),

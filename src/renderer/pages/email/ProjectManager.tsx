@@ -76,6 +76,7 @@ export default function ProjectManager() {
             selectedDir={fm.selectedDir}
             selectedDirLabel={fm.selectedDirLabel}
             files={fm.files}
+            loading={fm.fileLoading}
             selectedFiles={fm.selectedFiles}
             renamingFile={fm.renamingFile}
             renameValue={fm.renameValue}

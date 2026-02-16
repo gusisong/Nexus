@@ -1,80 +1,79 @@
-# Nexus — 企业工具平台
+# Nexus (企业工具平台)
 
-基于 **Electron + React + TypeScript** 的桌面工具平台，目前包含邮件批量外发模块。
+Nexus 是一个基于 Electron + React + TypeScript 构建的现代化企业工具平台，旨在整合各类办公自动化工具。目前核心功能包括「邮件批量发送」与「项目文件管理」。
 
-## 技术栈
+## ✨ 核心特性
 
-| 层面 | 技术 |
-|------|------|
-| 框架 | Electron + Electron Forge |
-| 前端 | React 18 + TypeScript + Ant Design 5 |
-| 构建 | Vite |
-| 邮件 | Nodemailer |
-| 路由 | React Router v6 |
-| 状态 | Zustand |
+- **项目管理**：
+  - 双栏式文件管理（左侧项目树 + 右侧文件表）
+  - 支持文件/文件夹拖拽上传
+  - 内置 CSV 编辑器（支持 BOM 及编码自动识别）
+  - 项目/文件增删改查
+- **邮件群发**：
+  - 支持 SMTP 协议批量发送
+  - 智能限流与重试机制（避免 421 错误）
+  - 实时发送进度监控
+  - 自动识别 `.xlsx` 附件并匹配供应商代码
+- **现代化架构**：
+  - 强类型 IPC 通信（Result<T> 模式）
+  - Zustand 全局状态管理
+  - Ant Design 5.0 UI 组件库
 
-## 开发
+## 🚀 快速开始
+
+### 环境要求
+
+- Node.js >= 16.0.0
+- NPM >= 8.0.0
+
+### 安装依赖
 
 ```bash
-# 安装依赖
 npm install
+```
 
-# 启动开发模式
+### 启动开发环境
+
+```bash
 npm start
-
-# Linux 下需要禁用沙箱
-ELECTRON_DISABLE_SANDBOX=1 npm start
 ```
 
-## 打包
+此命令将启动 Electron 主进程及 Vite 开发服务器（渲染进程），支持热重载。
 
-### Windows（在 Windows 电脑上执行）
+### 构建应用
 
 ```bash
-# 打包为 Windows 安装程序（Squirrel）
+# 生成可执行文件 (Linux: .deb/.rpm, Windows: .exe w/ Squirrel)
 npm run make
-
-# 产物位于: out/make/squirrel.windows/x64/
-# 文件: Nexus-x.x.x-Setup.exe
 ```
 
-安装程序功能：
+构建产物将输出至 `out/` 目录。
 
-- ✅ 自动创建桌面快捷方式
-- ✅ 自动创建开始菜单快捷方式
-- ✅ 支持通过「添加/删除程序」卸载
-
-### Linux
-
-```bash
-npm run make
-# 产物位于 out/make/deb 或 out/make/rpm
-```
-
-## 项目结构
+## 📁 目录结构
 
 ```
 src/
-├── main.ts                  # Electron 主进程入口
-├── preload.ts               # IPC 安全桥接
-├── shared/ipc.ts            # IPC 通道 & 类型定义
-├── main/                    # 后端服务（Node.js）
-│   ├── ipc/handlers.ts
-│   └── services/
-│       ├── config.service.ts
-│       ├── email.service.ts
-│       ├── project.service.ts
-│       └── ini-parser.ts
-└── renderer/                # 前端（React）
-    ├── App.tsx
-    ├── components/
-    └── pages/
+├── main/              # Electron 主进程
+│   ├── ipc/           # IPC 处理器注册
+│   └── services/      # 后端业务逻辑 (文件、项目、邮件等)
+├── renderer/          # React 渲染进程
+│   ├── components/    # 通用 UI 组件
+│   ├── hooks/         # 自定义 Hooks (业务逻辑封装)
+│   ├── pages/         # 页面视图 (项目管理、发送面板等)
+│   └── stores/        # Zustand 状态库
+└── shared/            # 前后端共享类型 (IPC 契约、Result 定义)
 ```
 
-## 使用说明
+## 🛠️ 技术栈
 
-1. 启动应用后，在「系统设置」中设置工作根目录
-2. 将 `EmailAddress.csv` 放在工作根目录下
-3. 在「SMTP 配置」中设置邮箱账号密码
-4. 在「项目管理」中创建或查看项目
-5. 在「批量发送」中选择项目并发送
+- Electron 33.0
+- React 19 + TypeScript
+- Vite 5.4
+- Ant Design 5.x
+- Zustand (状态管理)
+- Nodemailer (邮件发送)
+- Papaparse (CSV 处理)
+
+## 📄 许可证
+
+MIT
