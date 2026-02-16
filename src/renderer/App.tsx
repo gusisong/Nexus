@@ -17,12 +17,32 @@ export default function App() {
       theme={{
         algorithm: theme.darkAlgorithm,
         token: {
-          colorPrimary: '#667eea',
-          borderRadius: 8,
-          colorBgContainer: '#1f1f1f',
-          colorBgElevated: '#262626',
+          colorPrimary: '#3b82f6', // Professional blue
+          borderRadius: 4,
+          colorBgBase: '#0a0a0a',
+          colorBgContainer: '#141414',
+          colorBgElevated: '#1f1f1f',
+          colorBorder: '#303030',
           fontFamily:
             "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif",
+        },
+        components: {
+          Table: {
+            cellPaddingBlock: 8, // High density
+            headerBg: '#1f1f1f',
+            rowHoverBg: '#262626',
+          },
+          Button: {
+            controlHeight: 32,
+            paddingContentHorizontal: 12,
+          },
+          Input: {
+            controlHeight: 32,
+          },
+          Tree: {
+            directoryNodeSelectedBg: '#262626',
+            directoryNodeSelectedColor: '#3b82f6',
+          },
         },
       }}
     >

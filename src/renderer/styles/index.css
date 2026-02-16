@@ -36,12 +36,12 @@ body {
 
 /* ---- Sidebar ---- */
 .sidebar {
-  width: 180px;
-  min-width: 180px;
-  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+  width: 220px; /* Wider for better readability */
+  min-width: 220px;
+  background: #1f1f1f;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  border-right: 1px solid #303030;
   user-select: none;
   -webkit-app-region: drag;
 }
@@ -54,65 +54,58 @@ body {
 }
 
 .sidebar-logo h1 {
-  font-size: 22px;
-  font-weight: 700;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  letter-spacing: 1px;
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.5px;
 }
 
 .sidebar-logo .logo-icon {
-  font-size: 28px;
+  font-size: 24px;
+  color: #3b82f6;
 }
 
-.sidebar-menu {
-  flex: 1;
-  padding: 8px 0;
-  -webkit-app-region: no-drag;
-}
+/* ... (menu) ... */
 
 /* ---- Horizontal content tabs ---- */
 .content-tabs {
   display: flex;
   gap: 0;
-  padding: 0 32px;
-  background: #1a1a1a;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 0 24px;
+  background: #141414;
+  border-bottom: 1px solid #303030;
   flex-shrink: 0;
   overflow-x: auto;
 }
 
 .content-tab {
-  padding: 12px 20px;
+  padding: 12px 16px;
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.45);
   cursor: pointer;
   white-space: nowrap;
   border-bottom: 2px solid transparent;
-  transition: all 0.25s ease;
+  transition: all 0.2s ease;
   position: relative;
 }
 
 .content-tab:hover {
   color: rgba(255, 255, 255, 0.85);
-  background: rgba(255, 255, 255, 0.03);
 }
 
 .content-tab.active {
-  color: #667eea;
-  border-bottom-color: #667eea;
+  color: #3b82f6;
+  border-bottom-color: #3b82f6;
   font-weight: 500;
 }
 
 .sidebar-item {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 20px;
-  margin: 2px 8px;
-  border-radius: 8px;
+  gap: 12px;
+  padding: 8px 16px;
+  margin: 4px 12px;
+  border-radius: 6px;
   cursor: pointer;
   color: rgba(255, 255, 255, 0.65);
   font-size: 14px;
@@ -121,27 +114,21 @@ body {
 }
 
 .sidebar-item:hover {
-  background: rgba(255, 255, 255, 0.06);
-  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 .sidebar-item.active {
-  background: linear-gradient(
-    135deg,
-    rgba(102, 126, 234, 0.2) 0%,
-    rgba(118, 75, 162, 0.2) 100%
-  );
-  color: #667eea;
+  background: rgba(59, 130, 246, 0.15);
+  color: #3b82f6;
   font-weight: 500;
 }
 
-.sidebar-item .anticon {
-  font-size: 16px;
-}
+/* ... */
 
 .sidebar-footer {
   padding: 16px 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid #303030;
   font-size: 12px;
   color: rgba(255, 255, 255, 0.25);
   text-align: center;
@@ -158,137 +145,10 @@ body {
 }
 
 .content-header {
-  padding: 20px 32px 0;
+  padding: 24px 32px 0;
   flex-shrink: 0;
 }
+/* ... */
 
-.content-header h2 {
-  font-size: 20px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 4px;
-}
-
-.content-header p {
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.45);
-}
-
-.content-body {
-  flex: 1;
-  padding: 20px 32px 24px;
-  overflow-y: auto;
-}
-
-/* ---- Page cards ---- */
-.page-card {
-  background: #1f1f1f;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  padding: 24px;
-  margin-bottom: 20px;
-  transition: border-color 0.2s ease;
-}
-
-.page-card:hover {
-  border-color: rgba(102, 126, 234, 0.3);
-}
-
-.page-card h3 {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 16px;
-  color: rgba(255, 255, 255, 0.85);
-}
-
-/* ---- Progress panel ---- */
-.progress-panel {
-  background: linear-gradient(135deg, #1a1a2e 0%, #1f1f3a 100%);
-  border: 1px solid rgba(102, 126, 234, 0.3);
-  border-radius: 12px;
-  padding: 24px;
-}
-
-.progress-stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-top: 16px;
-}
-
-.progress-stat {
-  text-align: center;
-}
-
-.progress-stat .value {
-  font-size: 24px;
-  font-weight: 700;
-  color: #667eea;
-}
-
-.progress-stat .label {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.45);
-  margin-top: 4px;
-}
-
-.progress-stat.success .value {
-  color: #52c41a;
-}
-.progress-stat.failed .value {
-  color: #ff4d4f;
-}
-
-/* ---- Log viewer ---- */
-.log-viewer {
-  background: #0d0d0d;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
-  padding: 16px;
-  font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
-  font-size: 12px;
-  line-height: 1.7;
-  max-height: 500px;
-  overflow-y: auto;
-  white-space: pre-wrap;
-  word-break: break-all;
-}
-
-.log-line {
-  padding: 1px 0;
-}
-.log-line.info {
-  color: rgba(255, 255, 255, 0.65);
-}
-.log-line.warning {
-  color: #faad14;
-}
-.log-line.error {
-  color: #ff4d4f;
-}
-
-/* ---- Scrollbar ---- */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.25);
-}
-
-/* ---- Ant Design overrides for dark theme ---- */
-.ant-btn-primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-  border: none !important;
-  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3) !important;
-}
-
-.ant-btn-primary:hover {
-  opacity: 0.9;
-}
+/* ---- Ant Design overrides ---- */
+/* Remove gradient override */
